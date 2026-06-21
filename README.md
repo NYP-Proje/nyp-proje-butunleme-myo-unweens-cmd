@@ -1,1 +1,50 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=24149882&assignment_repo_type=AssignmentRepo)
+# Telefon Faturalama Sistemi
+
+## Proje Amacı
+
+Bu proje Nesne Tabanlı Programlama dersi kapsamında geliştirilmiştir. Amaç, telefon hattı kullanan müşterilerin bilgilerini kayıt altına almak, tarifelerini görüntülemek ve fatura bilgilerini yönetebilmektir.
+
+## Kullanılan Teknolojiler
+
+* Java
+* Java Swing
+* IntelliJ IDEA
+* GitHub
+
+## Proje İçeriği
+
+Projede kullanıcı giriş ekranı bulunmaktadır. Sisteme giriş yapıldıktan sonra ana menü açılır ve aşağıdaki işlemler gerçekleştirilebilir:
+
+* Müşteri ekleme
+* Müşteri listeleme
+* Müşteri silme
+* Tarife görüntüleme
+* Fatura görüntüleme
+
+## Kullanılan Yapılar
+
+Projede nesne tabanlı programlama prensiplerinden yararlanılmıştır.
+
+Sınıflar:
+
+* Kullanici
+* Musteri
+* Tarife
+* Fatura
+
+Müşteri kayıtlarını saklamak için ArrayList yapısı kullanılmıştır.
+
+Kullanici ve Musteri sınıfları arasında kalıtım (inheritance) uygulanmıştır.
+
+## Projenin İlk Haline Göre Yapılan Geliştirmeler
+
+* Konsol uygulamasından grafik arayüze geçildi.
+* Java Swing kullanılarak giriş ekranı oluşturuldu.
+* Ana menü tasarlandı.
+* Müşteri işlemleri için ayrı ekranlar geliştirildi.
+* Tarife ve fatura görüntüleme ekranları eklendi.
+* GitHub üzerinden sürüm kontrolü sağlandı.
+
+## Geliştirici
+
+Mert Can

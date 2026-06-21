@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class FaturaEkrani extends JFrame {
 
-```
     public FaturaEkrani() {
 
         setTitle("Fatura Bilgileri");
@@ -29,6 +28,6 @@ public class FaturaEkrani extends JFrame {
 
         setVisible(true);
     }
-```
+
 
 }
