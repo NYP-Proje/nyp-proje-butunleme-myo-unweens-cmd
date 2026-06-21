@@ -8,13 +8,14 @@ public class AnaMenu extends JFrame {
 
     public AnaMenu() {
 
-        setTitle("Telefon Faturalama Sistemi");
-        setSize(500, 450);
+        setTitle("Telefon Faturalama Sistemi v1.0");
+        setSize(550, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(6, 1, 10, 10));
+        panel.setBackground(new Color(220, 235, 255));
+        panel.setLayout(new GridLayout(6, 1, 15, 15));
 
         JButton musteriEkle = new JButton("Müşteri Ekle");
         JButton musteriListele = new JButton("Müşteri Listele");
@@ -22,6 +23,15 @@ public class AnaMenu extends JFrame {
         JButton tarifeBilgileri = new JButton("Tarife Bilgileri");
         JButton faturaGor = new JButton("Fatura Görüntüle");
         JButton cikis = new JButton("Çıkış");
+
+        Font butonFont = new Font("Arial", Font.BOLD, 16);
+
+        musteriEkle.setFont(butonFont);
+        musteriListele.setFont(butonFont);
+        musteriSil.setFont(butonFont);
+        tarifeBilgileri.setFont(butonFont);
+        faturaGor.setFont(butonFont);
+        cikis.setFont(butonFont);
 
         panel.add(musteriEkle);
         panel.add(musteriListele);
@@ -57,3 +67,4 @@ public class AnaMenu extends JFrame {
         setVisible(true);
     }
 }
+
