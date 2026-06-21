@@ -1,4 +1,5 @@
-package com.faturalama;
+
+        package com.faturalama;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -33,33 +34,19 @@ public class Main {
 
         ArrayList<Musteri> musteriler = new ArrayList<>();
 
+        Tarife tarife1 =
+                new Tarife(
+                        "Genclik Tarifesi",
+                        350,
+                        20,
+                        1000,
+                        250
+                );
+
+        Fatura fatura1 =
+                new Fatura(tarife1.aylikUcret);
+
         try {
-
-            System.out.print("Musteri Adi: ");
-            String ad = scanner.nextLine();
-
-            System.out.print("Musteri Soyadi: ");
-            String soyad = scanner.nextLine();
-
-            System.out.print("Telefon Numarasi: ");
-            String telefonNo = scanner.nextLine();
-
-            Musteri musteri1 =
-                    new Musteri(ad, soyad, telefonNo);
-
-            musteriler.add(musteri1);
-
-            Tarife tarife1 =
-                    new Tarife(
-                            "Genclik Tarifesi",
-                            350,
-                            20,
-                            1000,
-                            250
-                    );
-
-            Fatura fatura1 =
-                    new Fatura(tarife1.aylikUcret);
 
             int secim;
 
@@ -69,10 +56,10 @@ public class Main {
                 System.out.println("╔══════════════════════════════════════╗");
                 System.out.println("║                MENU                  ║");
                 System.out.println("╠══════════════════════════════════════╣");
-                System.out.println("║ 1 - Musteri Bilgileri                ║");
-                System.out.println("║ 2 - Tarife Bilgileri                 ║");
-                System.out.println("║ 3 - Fatura Goster                    ║");
-                System.out.println("║ 4 - Musteri Listesi                  ║");
+                System.out.println("║ 1 - Musteri Ekle                     ║");
+                System.out.println("║ 2 - Musteri Listele                  ║");
+                System.out.println("║ 3 - Tarife Bilgileri                 ║");
+                System.out.println("║ 4 - Fatura Goster                    ║");
                 System.out.println("║ 0 - Cikis                            ║");
                 System.out.println("╚══════════════════════════════════════╝");
 
@@ -83,29 +70,59 @@ public class Main {
 
                     case 1:
 
-                        musteri1.bilgileriGoster();
+                        scanner.nextLine();
+
+                        System.out.print("Musteri Adi: ");
+                        String ad = scanner.nextLine();
+
+                        System.out.print("Musteri Soyadi: ");
+                        String soyad = scanner.nextLine();
+
+                        System.out.print("Telefon Numarasi: ");
+                        String telefonNo = scanner.nextLine();
+
+                        Musteri yeniMusteri =
+                                new Musteri(ad, soyad, telefonNo);
+
+                        musteriler.add(yeniMusteri);
+
+                        System.out.println("✓ Musteri basariyla eklendi.");
+
                         break;
 
                     case 2:
 
-                        tarife1.tarifeBilgisi();
+                        if (musteriler.isEmpty()) {
+
+                            System.out.println("Kayitli musteri bulunamadi.");
+
+                        } else {
+
+                            System.out.println("\n--- MUSTERI LISTESI ---");
+
+                            for (Musteri m : musteriler) {
+
+                                System.out.println(
+                                        m.ad + " " +
+                                                m.soyad +
+                                                " | " +
+                                                m.telefonNo
+                                );
+
+                            }
+
+                        }
+
                         break;
 
                     case 3:
 
-                        fatura1.faturaYazdir();
+                        tarife1.tarifeBilgisi();
                         break;
 
                     case 4:
 
-                        for (Musteri m : musteriler) {
-
-                            System.out.println(
-                                    m.ad + " " + m.soyad
-                            );
-
-                        }
-
+                        fatura1.faturaYazdir();
                         break;
 
                     case 0:
@@ -125,7 +142,7 @@ public class Main {
 
         catch (Exception e) {
 
-            System.out.println("Hatali veri girdiniz");
+            System.out.println("Hatali veri girdiniz.");
 
         }
 
