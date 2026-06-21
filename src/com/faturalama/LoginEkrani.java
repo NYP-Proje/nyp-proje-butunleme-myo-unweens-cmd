@@ -1,4 +1,5 @@
-package com.faturalama;
+
+        package com.faturalama;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,36 +21,98 @@ public class LoginEkrani extends JFrame {
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(34, 139, 34));
+        panel.setBackground(new Color(28, 35, 49));
         panel.setLayout(null);
 
-        JLabel baslik = new JLabel("Telefon Faturalama Sistemi");
-        baslik.setBounds(70, 30, 400, 40);
-        baslik.setForeground(Color.WHITE);
-        baslik.setFont(new Font("Arial", Font.BOLD, 24));
+        JLabel baslik =
+                new JLabel("Telefon Faturalama Sistemi");
 
-        JLabel tcLabel = new JLabel("TC Kimlik No");
-        tcLabel.setBounds(70, 100, 200, 25);
+        baslik.setBounds(55, 35, 400, 40);
+        baslik.setForeground(Color.WHITE);
+        baslik.setFont(
+                new Font("Arial",
+                        Font.BOLD,
+                        26)
+        );
+
+        JLabel tcLabel =
+                new JLabel("TC Kimlik No");
+
+        tcLabel.setBounds(70, 110, 200, 25);
         tcLabel.setForeground(Color.WHITE);
 
         tcField = new JTextField();
-        tcField.setBounds(70, 125, 340, 35);
+        tcField.setBounds(70, 135, 340, 38);
 
-        JLabel sifreLabel = new JLabel("Şifre");
-        sifreLabel.setBounds(70, 175, 200, 25);
+        JLabel sifreLabel =
+                new JLabel("Şifre");
+
+        sifreLabel.setBounds(70, 190, 200, 25);
         sifreLabel.setForeground(Color.WHITE);
 
-        sifreField = new JPasswordField();
-        sifreField.setBounds(70, 200, 340, 35);
+        sifreField =
+                new JPasswordField();
 
-        girisButon = new JButton("Giriş Yap");
-        girisButon.setBounds(70, 260, 340, 40);
+        sifreField.setBounds(
+                70,
+                215,
+                340,
+                38
+        );
 
-        kayitOlButon = new JButton("Kayıt Ol");
-        kayitOlButon.setBounds(70, 310, 165, 40);
+        girisButon =
+                new JButton("Giriş Yap");
 
-        sifremiUnuttumButon = new JButton("Şifremi Unuttum");
-        sifremiUnuttumButon.setBounds(245, 310, 165, 40);
+        girisButon.setBounds(
+                70,
+                280,
+                340,
+                42
+        );
+
+        girisButon.setBackground(
+                new Color(46, 204, 113)
+        );
+
+        girisButon.setForeground(
+                Color.WHITE
+        );
+
+        kayitOlButon =
+                new JButton("Kayıt Ol");
+
+        kayitOlButon.setBounds(
+                70,
+                340,
+                165,
+                40
+        );
+
+        kayitOlButon.setBackground(
+                new Color(52, 152, 219)
+        );
+
+        kayitOlButon.setForeground(
+                Color.WHITE
+        );
+
+        sifremiUnuttumButon =
+                new JButton("Şifremi Unuttum");
+
+        sifremiUnuttumButon.setBounds(
+                245,
+                340,
+                165,
+                40
+        );
+
+        sifremiUnuttumButon.setBackground(
+                new Color(231, 76, 60)
+        );
+
+        sifremiUnuttumButon.setForeground(
+                Color.WHITE
+        );
 
         panel.add(baslik);
         panel.add(tcLabel);
@@ -64,13 +127,32 @@ public class LoginEkrani extends JFrame {
 
         girisButon.addActionListener(e -> {
 
-            String tc = tcField.getText();
-            String sifre =
-                    new String(sifreField.getPassword());
+            String tc =
+                    tcField.getText();
 
-            if (tc.equals(Veritabani.kayitliTc)
-                    &&
-                    sifre.equals(Veritabani.kayitliSifre)) {
+            String sifre =
+                    new String(
+                            sifreField.getPassword()
+                    );
+
+            boolean girisBasarili =
+                    false;
+
+            for (Hesap h :
+                    Veritabani.hesaplar) {
+
+                if (h.tc.equals(tc)
+                        &&
+                        h.sifre.equals(sifre)) {
+
+                    girisBasarili = true;
+                    break;
+
+                }
+
+            }
+
+            if (girisBasarili) {
 
                 dispose();
                 new AnaMenu();
@@ -94,15 +176,37 @@ public class LoginEkrani extends JFrame {
 
         sifremiUnuttumButon.addActionListener(e -> {
 
+            String tc =
+                    JOptionPane.showInputDialog(
+                            "TC Giriniz"
+                    );
+
+            for (Hesap h :
+                    Veritabani.hesaplar) {
+
+                if (h.tc.equals(tc)) {
+
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Şifreniz: "
+                                    + h.sifre
+                    );
+
+                    return;
+
+                }
+
+            }
+
             JOptionPane.showMessageDialog(
                     null,
-                    "Kayıtlı Şifre: "
-                            + Veritabani.kayitliSifre
+                    "Kullanıcı Bulunamadı"
             );
 
         });
 
         setVisible(true);
+
     }
 
     public static void main(String[] args) {
@@ -110,4 +214,6 @@ public class LoginEkrani extends JFrame {
         new LoginEkrani();
 
     }
+
 }
+

@@ -1,4 +1,5 @@
-package com.faturalama;
+
+        package com.faturalama;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,49 +14,102 @@ public class KayitOlEkrani extends JFrame {
     public KayitOlEkrani() {
 
         setTitle("Kayıt Ol");
-        setSize(450, 300);
+        setSize(500, 450);
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(230, 255, 230));
+        panel.setBackground(new Color(28, 35, 49));
         panel.setLayout(null);
 
         JLabel baslik =
                 new JLabel("Yeni Kullanıcı Kaydı");
 
-        baslik.setBounds(110, 20, 250, 30);
+        baslik.setBounds(90, 35, 350, 40);
+        baslik.setForeground(Color.WHITE);
         baslik.setFont(
-                new Font("Arial",
+                new Font(
+                        "Arial",
                         Font.BOLD,
-                        20)
+                        26
+                )
         );
 
         JLabel tcLabel =
                 new JLabel("TC Kimlik No");
 
-        tcLabel.setBounds(50, 80, 150, 25);
+        tcLabel.setBounds(
+                70,
+                110,
+                200,
+                25
+        );
 
-        tcField = new JTextField();
-        tcField.setBounds(50, 105, 320, 35);
+        tcLabel.setForeground(
+                Color.WHITE
+        );
+
+        tcField =
+                new JTextField();
+
+        tcField.setBounds(
+                70,
+                135,
+                340,
+                38
+        );
 
         JLabel sifreLabel =
                 new JLabel("Şifre");
 
-        sifreLabel.setBounds(50, 150, 150, 25);
+        sifreLabel.setBounds(
+                70,
+                190,
+                200,
+                25
+        );
+
+        sifreLabel.setForeground(
+                Color.WHITE
+        );
 
         sifreField =
                 new JPasswordField();
 
-        sifreField.setBounds(50, 175, 320, 35);
+        sifreField.setBounds(
+                70,
+                215,
+                340,
+                38
+        );
 
         kayitButon =
                 new JButton("Kayıt Ol");
 
         kayitButon.setBounds(
-                50,
-                220,
-                320,
-                35
+                70,
+                290,
+                340,
+                45
+        );
+
+        kayitButon.setBackground(
+                new Color(
+                        52,
+                        152,
+                        219
+                )
+        );
+
+        kayitButon.setForeground(
+                Color.WHITE
+        );
+
+        kayitButon.setFont(
+                new Font(
+                        "Arial",
+                        Font.BOLD,
+                        15
+                )
         );
 
         panel.add(baslik);
@@ -69,17 +123,21 @@ public class KayitOlEkrani extends JFrame {
 
         kayitButon.addActionListener(e -> {
 
-            Veritabani.kayitliTc =
-                    tcField.getText();
-
-            Veritabani.kayitliSifre =
-                    new String(
-                            sifreField.getPassword()
+            Hesap yeniHesap =
+                    new Hesap(
+                            tcField.getText(),
+                            new String(
+                                    sifreField.getPassword()
+                            )
                     );
+
+            Veritabani.hesaplar.add(
+                    yeniHesap
+            );
 
             JOptionPane.showMessageDialog(
                     null,
-                    "Kayıt Başarılı!"
+                    "Kayıt Başarıyla Oluşturuldu!"
             );
 
             dispose();
@@ -87,5 +145,8 @@ public class KayitOlEkrani extends JFrame {
         });
 
         setVisible(true);
+
     }
+
 }
+
