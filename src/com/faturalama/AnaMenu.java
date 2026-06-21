@@ -22,6 +22,11 @@ public class AnaMenu extends JFrame {
 
         });
         JButton musteriListele = new JButton("Müşteri Listele");
+        musteriListele.addActionListener(e -> {
+
+            new MusteriListeleEkrani();
+
+        });
         JButton tarifeBilgileri = new JButton("Tarife Bilgileri");
         JButton faturaGor = new JButton("Fatura Görüntüle");
         JButton cikis = new JButton("Çıkış");
