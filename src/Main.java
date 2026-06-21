@@ -9,12 +9,29 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Musteri> musteriler = new ArrayList<>();
+        String tc = "12345678901";
+        String sifre = "admin123";
 
         System.out.println("╔══════════════════════════════════════╗");
         System.out.println("║      TELEFON FATURALAMA SISTEMI      ║");
         System.out.println("╚══════════════════════════════════════╝");
-        System.out.println();
+
+        System.out.print("TC Kimlik No: ");
+        String girilenTc = scanner.nextLine();
+
+        System.out.print("Sifre: ");
+        String girilenSifre = scanner.nextLine();
+
+        if (!girilenTc.equals(tc) || !girilenSifre.equals(sifre)) {
+
+            System.out.println("Giris basarisiz!");
+            return;
+
+        }
+
+        System.out.println("\nGiris basarili!\n");
+
+        ArrayList<Musteri> musteriler = new ArrayList<>();
 
         try {
 
@@ -32,10 +49,6 @@ public class Main {
 
             musteriler.add(musteri1);
 
-            System.out.println();
-            System.out.println("✓ Musteri basariyla kaydedildi.");
-            System.out.println();
-
             Tarife tarife1 =
                     new Tarife(
                             "Genclik Tarifesi",
@@ -50,52 +63,63 @@ public class Main {
 
             int secim;
 
-            System.out.println("╔══════════════════════════════════════╗");
-            System.out.println("║                MENU                  ║");
-            System.out.println("╠══════════════════════════════════════╣");
-            System.out.println("║ 1 - Musteri Bilgileri                ║");
-            System.out.println("║ 2 - Tarife Bilgileri                 ║");
-            System.out.println("║ 3 - Fatura Goster                    ║");
-            System.out.println("║ 4 - Musteri Listesi                  ║");
-            System.out.println("║ 0 - Cikis                            ║");
-            System.out.println("╚══════════════════════════════════════╝");
+            do {
 
-            System.out.print("Seciminiz: ");
-            secim = scanner.nextInt();
+                System.out.println();
+                System.out.println("╔══════════════════════════════════════╗");
+                System.out.println("║                MENU                  ║");
+                System.out.println("╠══════════════════════════════════════╣");
+                System.out.println("║ 1 - Musteri Bilgileri                ║");
+                System.out.println("║ 2 - Tarife Bilgileri                 ║");
+                System.out.println("║ 3 - Fatura Goster                    ║");
+                System.out.println("║ 4 - Musteri Listesi                  ║");
+                System.out.println("║ 0 - Cikis                            ║");
+                System.out.println("╚══════════════════════════════════════╝");
 
-            if (secim == 1) {
+                System.out.print("Seciminiz: ");
+                secim = scanner.nextInt();
 
-                musteri1.bilgileriGoster();
+                switch (secim) {
 
-            }
+                    case 1:
 
-            else if (secim == 2) {
+                        musteri1.bilgileriGoster();
+                        break;
 
-                tarife1.tarifeBilgisi();
+                    case 2:
 
-            }
+                        tarife1.tarifeBilgisi();
+                        break;
 
-            else if (secim == 3) {
+                    case 3:
 
-                fatura1.faturaYazdir();
+                        fatura1.faturaYazdir();
+                        break;
 
-            }
+                    case 4:
 
-            else if (secim == 4) {
+                        for (Musteri m : musteriler) {
 
-                for (Musteri m : musteriler) {
+                            System.out.println(
+                                    m.ad + " " + m.soyad
+                            );
 
-                    System.out.println(m.ad + " " + m.soyad);
+                        }
+
+                        break;
+
+                    case 0:
+
+                        System.out.println("Program sonlandirildi.");
+                        break;
+
+                    default:
+
+                        System.out.println("Hatali secim yaptiniz.");
 
                 }
 
-            }
-
-            else {
-
-                System.out.println("Hatali secim yaptiniz");
-
-            }
+            } while (secim != 0);
 
         }
 
@@ -106,4 +130,5 @@ public class Main {
         }
 
     }
+
 }
