@@ -34,6 +34,11 @@ public class AnaMenu extends JFrame {
 
         });
         JButton faturaGor = new JButton("Fatura Görüntüle");
+        faturaGor.addActionListener(e -> {
+
+            new FaturaEkrani();
+
+        });
         JButton cikis = new JButton("Çıkış");
 
         panel.add(musteriEkle);
