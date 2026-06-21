@@ -28,6 +28,11 @@ public class AnaMenu extends JFrame {
 
         });
         JButton tarifeBilgileri = new JButton("Tarife Bilgileri");
+        tarifeBilgileri.addActionListener(e -> {
+
+            new TarifeSecEkrani();
+
+        });
         JButton faturaGor = new JButton("Fatura Görüntüle");
         JButton cikis = new JButton("Çıkış");
 
